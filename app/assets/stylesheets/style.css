@@ -1,0 +1,61 @@
+/* Highlight score and status */
+.score {
+    font-size: 2em;
+    font-weight: bold;
+    display: inline-block;
+    padding: 0.2em 0.5em;
+    border-radius: 5px;
+    margin-bottom: 0.5em;
+}
+
+.score.passed {
+    color: green;
+    background-color: lightgreen;
+}
+
+.score.failed {
+    color: white;
+    background-color: red;
+}
+
+.status {
+    font-size: 1.2em;
+    display: inline-block;
+    margin-bottom: 0.5em;
+    padding: 0.2em 0.5em;
+    border-radius: 5px;
+}
+
+.status.passed {
+    color: green;
+    background-color: lightgreen;
+}
+
+.status.failed {
+    color: white;
+    background-color: red;
+}
+
+/* Table styles */
+table {
+    border-collapse: collapse;
+    margin-bottom: 1em;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 0.5em;
+}
+
+th {
+    background-color: lightgrey;
+}
+
+tbody tr:nth-child(even) {
+    background-color: lightgrey;
+}
+
+tbody tr:hover {
+    background-color: yellow;
+}

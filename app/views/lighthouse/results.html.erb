@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lighthouse Results</title>
+    <link rel="stylesheet" href="../stylesheets/style.css">
+</head>
+  <body>
+    <h1>Lighthouse Results</h1>
+<!--    <label for="file">Score:</label>-->
+<!--    <progress id="file" value=<%#= @result.score %> max="100"> <span class="score <%#= @result.score.to_s.downcase %>"><%#= @result.score %></span></progress>-->
+    <p>Score: <span class="score <%= @result.score.to_s.downcase %>"><%= @result.score %></span></p>
+    <p>Status: <span class="status <%= @result.status.downcase %>"><%= @result.status %></span></p>
+
+
+    <% if @result.issues %>
+      <h2>Issues:</h2>
+      <table>
+        <thead>
+        <tr>
+          <th>Label</th>
+          <th>CSS Selector</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @result.issues.each do |issue| %>
+          <tr>
+            <td><%= issue.label %></td>
+            <td><%= issue.css_selector %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <p>No issues found.</p>
+    <% end %>
+  </body>
+</html>
