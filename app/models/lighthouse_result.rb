@@ -35,12 +35,12 @@ class LighthouseResult
       next if data['score'].nil?
       if data['score'] < 1
         @score -= 1
-        issues << Issue.new(data['title'], data.dig('details', 'selector'))
+        issues << Issue.new(data['title'], data.dig('details', 'selector'), data['description'])
       end
       ISSUE_SCORES.each do |issue_type, score|
         if data.dig('details', 'items')&.any? { |item| item['type'] == issue_type }
           @score += score
-          issues << Issue.new("#{issue_type} => #{data['title']}", data.dig('details', 'selector'))
+          issues << Issue.new("#{issue_type} => #{data['title']}", data.dig('details', 'selector'), data['description'])
         end
       end
     end

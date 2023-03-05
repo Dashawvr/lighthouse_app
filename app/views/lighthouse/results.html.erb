@@ -1,15 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Lighthouse Results</title>
     <link rel="stylesheet" href="../stylesheets/style.css">
 </head>
   <body>
     <h1>Lighthouse Results</h1>
-<!--    <label for="file">Score:</label>-->
-<!--    <progress id="file" value=<%#= @result.score %> max="100"> <span class="score <%#= @result.score.to_s.downcase %>"><%#= @result.score %></span></progress>-->
-    <p>Score: <span class="score <%= @result.score.to_s.downcase %>"><%= @result.score %></span></p>
-    <p>Status: <span class="status <%= @result.status.downcase %>"><%= @result.status %></span></p>
+    <label for="html" class="eb-progress-bar-title">
+      <h2>Score</h2>
+    </label>
+    <div class="eb-progress-bar html" style="--value: <%= @result.score %>;">
+      <progress id="html" min="0" max="100" value=<%= @result.score %>></progress>
+    </div>
+    <div class="wrap">
+    <div class="status-range">
+      <span class="status failed">Failed (0-70)</span>
+      <span class="status poor">Poor (70-79)</span>
+      <span class="status fair">Fair (80-89)</span>
+      <span class="status good">Good (90-99)</span>
+      <span class="status excellent">Excellent (100)</span>
+    </div>
+    </div>
 
 
     <% if @result.issues %>
@@ -24,14 +35,19 @@
         <tbody>
         <% @result.issues.each do |issue| %>
           <tr>
-            <td><%= issue.label %></td>
+            <td class="issue-cell">
+              <div class="dropdown">
+                <span class="label"><%= issue.label %></span>
+                <div class="dropdown-content"><%= issue.description %></div>
+              </div>
+            </td>
             <td><%= issue.css_selector %></td>
           </tr>
         <% end %>
         </tbody>
       </table>
     <% else %>
-      <p>No issues found.</p>
+      <p>No issues found</p>
     <% end %>
   </body>
 </html>
