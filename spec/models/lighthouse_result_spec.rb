@@ -20,8 +20,6 @@ RSpec.describe LighthouseResult, type: :model do
     end
   end
 
-
-
   describe "#calculate_status" do
     it "calculates the status correctly" do
       json_data = File.read(Rails.root.join("public", "lighthouse_report.json"))

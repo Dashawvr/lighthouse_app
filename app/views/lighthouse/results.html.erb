@@ -41,7 +41,13 @@
                 <div class="dropdown-content"><%= issue.description %></div>
               </div>
             </td>
-            <td><%= issue.css_selector %></td>
+            <td>
+              <% if issue.css_selector.nil? || issue.css_selector.empty? %>
+                <span>No selector provided</span>
+              <% else %>
+                <%= issue.css_selector %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
         </tbody>
